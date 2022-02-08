@@ -2,10 +2,12 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace cwiczenia_4_s16324.Services
@@ -15,6 +17,7 @@ namespace cwiczenia_4_s16324.Services
     {
         int AddProduct(Product product);
         int RegisterProduct(Request request);
+        string RegisterProductByProcedure(Request request);
     }
     public class MockDatabaseService : IDatabaseService
     {
@@ -26,6 +29,10 @@ namespace cwiczenia_4_s16324.Services
         public int RegisterProduct(Request request)
         {
             return 1;
+        }
+        public string RegisterProductByProcedure(Request request)
+        {
+            return "1";
         }
     }
 
@@ -270,6 +277,36 @@ namespace cwiczenia_4_s16324.Services
             return FulfillOrder(request, order.IdOrder, product.Price, Timestamp);
 
             //return 1;
+        }
+
+        public string RegisterProductByProcedure(Request request)
+        {
+            DateTime Timestamp = DateTime.Now;
+            string result = "";
+            using (SqlConnection con = new SqlConnection(_configuration.GetConnectionString("ProductionDb")))
+            {
+                try
+                {
+                    SqlCommand com = new SqlCommand("AddProductToWarehouse", con);
+                    com.CommandType = System.Data.CommandType.StoredProcedure;
+                    con.Open();
+
+                    com.Parameters.Add(new SqlParameter("@IdProduct", request.IdProduct));
+                    com.Parameters.Add(new SqlParameter("@IdWarehouse", request.IdWarehouse));
+                    com.Parameters.Add(new SqlParameter("@Amount", request.Amount));
+                    com.Parameters.Add(new SqlParameter("@CreatedAt", Timestamp));
+                    
+                    decimal id = (decimal)com.ExecuteScalar();
+                    result = Convert.ToString(id);
+
+                }
+                catch(SqlException ex)
+                {
+                    return ex.Message;
+                }
+            }
+
+            return result;
         }
 
     }
