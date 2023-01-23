@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bJ5G8dTNr/OCGza/ngfZFnSnZnseIHPb98CBtL2f6B+Vm8Luq1i5vrMM1etwClyGFFq3cZu6AFL4FBuTmAOjGw==",
+  "dgSpecHash": "a0x5KEo5lZR8GivhFz5u5seYaI5Pj8nkxEXiL9irL8BMxmfHUNsngJ/9KKzVO90v/37lGak74PiV+VQK8Gv0bQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lewan\\cwiczenia-5-s16324\\cwiczenia-4-s16324\\cwiczenia-4-s16324.csproj",
+  "projectFilePath": "C:\\Users\\lewan\\APBD\\5\\cwiczenia-5-s16324\\cwiczenia-4-s16324\\cwiczenia-4-s16324.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lewan\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\lewan\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

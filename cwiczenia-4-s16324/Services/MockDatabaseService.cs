@@ -221,7 +221,7 @@ namespace cwiczenia_4_s16324.Services
                     com.Parameters.AddWithValue("@Price", PriceCalculated);
                     com.Parameters.AddWithValue("@CreatedAt", Timestamp);
                     RowsAffected = com.ExecuteNonQuery();
-                    IdInserted = Convert.ToInt32(com.ExecuteScalar());
+                    //IdInserted = Convert.ToInt32(com.ExecuteScalar());
 
                     tran.Commit();
                 }
@@ -239,7 +239,7 @@ namespace cwiczenia_4_s16324.Services
 
             }
 
-            return IdInserted;
+            return RowsAffected;
         }
 
         public int RegisterProduct(Request request)
